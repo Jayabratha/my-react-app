@@ -6,6 +6,32 @@
     animation: App-logo-spin infinite 20s linear;
     height: 50px;
     pointer-events: none;
+    vertical-align: middle;
+}
+
+nav a {
+    text-decoration: none;
+    color: #c3c3c3;
+}
+
+nav a.selected, nav a:hover {
+    color: #ffffff;
+}
+
+nav {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 20px;
 }
 
 .App-header {
@@ -16,7 +42,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-size: calc(10px + 2vmin);
     color: white;
     padding: 5px 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -53,14 +78,14 @@ main {
     right: 0;
     width: 100vw;
     min-height: 100vh;
-    max-width: 70%;
+    max-width: 130vh;
     overflow: hidden;
 }
 
 .background-logo {
     position: relative;
-    top: -150px;
-    height: 1111px;
+    top: -20vh;
+    height: 150vh;
     opacity: 0.2;
 }
 
@@ -78,6 +103,11 @@ button.solid {
     box-sizing: content-box;
     vertical-align: top;
     margin: 0;
+}
+
+button.solid a {
+    text-decoration: none;
+    color: #212121;
 }
 
 @keyframes App-logo-spin {

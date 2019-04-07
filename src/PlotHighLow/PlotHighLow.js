@@ -10,7 +10,7 @@ function findHighLow(array) {
     }
 
     function recursiveFind(array, output, startIndex) {
-        var arrayLength, halfLength, fHalf, diff, sHalf, output, lItem, fItem, pItem1, pItem2;
+        var arrayLength, halfLength, fHalf, diff, sHalf, lItem, fItem, pItem1, pItem2;
 
         arrayLength = array.length;
         lItem = array[arrayLength - 1];
@@ -45,8 +45,6 @@ function findHighLow(array) {
     return recursiveFind(array, [], 0);
 
 }
-
-console.log(findHighLow([1, 2, 3, 4, 3, 2, 1, 2, 3, 2, 1, 1]));
 
 export class PlotHighLow extends React.Component {
 

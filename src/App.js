@@ -1,31 +1,43 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { Game } from './Game/Game';
+import { Home } from './Home/Home';
+import { Demos } from './Demos/Demos';
+import { ProtectedRoute } from './ProtectedRoute/ProtectedRoute';
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import './App.css';
-import { PlotHighLow } from './PlotHighLow/PlotHighLow';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      auth: true
+    }
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-        <main>
-          <div className="welcome-page">
-            <h1 className="welcome-msg">Thinking in <span className="react">React</span></h1>
-            <h2>Demos</h2>
-            <div className="demo-wrapper">
-              <h3>Find Highs and Low: ZestMoney Exercise</h3>
-              <PlotHighLow />
+        <Router>
+          <header className="App-header">
+            <div>
+              <img src={logo} className="App-logo" alt="logo" />
+              <nav>
+                <ul>
+                  <li>
+                    <NavLink exact activeClassName="selected" to="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink activeClassName="selected" to="/demos">Demos</NavLink>
+                  </li>
+                </ul>
+              </nav>
             </div>
-            <div className="demo-wrapper">
-              <h3>Tic Tac Toe: A simple game from React tutorial</h3>
-              <Game />
-            </div>
+          </header>
+          <main>
+            <Route path="/" exact component={Home} />
+            <ProtectedRoute auth={this.state.auth} path="/demos" component={Demos} />
             <div className="background-logo-wrapper"><img src={logo} className="background-logo" alt="logo" /></div>
-          </div>
-        </main>
+          </main>
+        </Router>
       </div>
     );
   }
