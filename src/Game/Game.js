@@ -1,4 +1,7 @@
 import React from 'react';
+import { Input } from 'antd';
+import { Button } from 'antd';
+
 import './Game.css';
 
 function setWiningLines(gridLength) {
@@ -178,8 +181,8 @@ export class Game extends React.Component {
                         </div>
                     ) : (
                             <div className="start-input">
-                                <input className="grid-length" placeholder="Enter Grid length" type="number" value={this.state.inputValue} onChange={this.handleUpdate}></input>
-                                <button className="solid start-game" onClick={this.setGridLength}>Start Game</button>
+                                <Input size="large" placeholder="Enter Grid length" type="number" value={this.state.inputValue} onChange={this.handleUpdate} />
+                                <Button type="primary" size="large" onClick={this.setGridLength}>Start Game</Button>
                             </div>
                         )
                 }

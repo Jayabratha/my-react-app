@@ -1,21 +1,2 @@
-body {
-  background-color: #282c34;
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-h1, h2, h3, h4 {
-  font-weight: 300;
-  margin: 0;
-  padding-bottom: 20px;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}

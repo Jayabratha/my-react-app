@@ -1,4 +1,7 @@
 import React from 'react';
+import { Input } from 'antd';
+import { Button } from 'antd';
+
 import './PlotHighLow.css';
 
 function findHighLow(array) {
@@ -83,8 +86,8 @@ export class PlotHighLow extends React.Component {
         return (
             <div className="high-low">
                 <div className="start-input">
-                    <input className="grid-length" placeholder="Enter List like (1, 2, 3)" type="string" value={this.state.inputValue} onChange={this.handleUpdate} ></input>
-                    <button className="solid" onClick={this.findIndex}>Find Highs Lows</button>
+                    <Input size="large" placeholder="Enter List like (1, 2, 3)" value={this.state.inputValue} onChange={this.handleUpdate} />
+                    <Button type="primary" size="large" className="solid" onClick={this.findIndex}>Find Highs Lows</Button>
                     {this.state.showOutput && (<div className="output">Output: {this.state.outIndex.length > 0 ? indexes : 'No Highs or Lows found'}</div>)}
                 </div>
             </div>

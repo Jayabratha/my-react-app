@@ -1,3 +1,7 @@
 .welcome-page {
     margin: 100px 0;
 }
+
+.welcome-msg {
+    font-size: 50px;
+}

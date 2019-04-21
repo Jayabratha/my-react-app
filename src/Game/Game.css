@@ -16,6 +16,7 @@
     display: inline-block;
     border: thin solid #61dafb;
     margin-bottom: 30px;
+    box-sizing: content-box;
 }
 
 .time-travel {
@@ -61,4 +62,14 @@
 
 .step:first-child {
     margin-top: 0;
+}
+
+.start-input button {
+    vertical-align: middle;
+}
+
+.start-input input {
+    vertical-align: middle;
+    width: 300px;
+    margin-right: 10px;
 }

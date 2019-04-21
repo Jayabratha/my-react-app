@@ -1,4 +1,11 @@
-.App {
+body {
+    background-color: #282c34;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
     color: #ffffff;
 }
 
@@ -9,18 +16,10 @@
     vertical-align: middle;
 }
 
-nav a {
-    text-decoration: none;
-    color: #c3c3c3;
-}
-
-nav a.selected, nav a:hover {
-    color: #ffffff;
-}
-
 nav {
     display: inline-block;
     vertical-align: middle;
+    height: 60px;
 }
 
 nav ul {
@@ -34,31 +33,39 @@ nav ul li {
     padding: 0 20px;
 }
 
+nav a {
+    text-decoration: none;
+    color: #c3c3c3;
+    line-height: 58px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+}
+
+nav a.selected, nav a:hover {
+    color: #ffffff;
+}
+
+nav a.selected {
+    border-color: #ffffff;
+}
+
 .App-header {
     position: fixed;
     width: 100%;
+    height: 60px;
     background-color: #2e333b;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     color: white;
-    padding: 5px 10px;
+    padding: 0 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     z-index: 10;
 }
 
-.App-link {
-    color: #61dafb;
-}
-
 main {
     padding: 100px 30px;
-}
-
-.welcome-msg {
-    font-size: 50px;
-    padding: 20px 0;
 }
 
 .react {
@@ -89,24 +96,10 @@ main {
     opacity: 0.2;
 }
 
-button.solid {
-    font-family: Roboto, sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-    padding: 8px 15px;
-    margin: 5px 0;
-    border: 2px solid #61dafb;
-    width: 150px;
-    cursor: pointer;
-    background: #61dafb;
-    height: 24px;
-    box-sizing: content-box;
-    vertical-align: top;
-    margin: 0;
-}
 
-button.solid a {
-    text-decoration: none;
+button.ant-btn-primary,
+button.ant-btn-primary:focus,
+button.ant-btn-primary:hover {
     color: #212121;
 }
 
