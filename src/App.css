@@ -9,6 +9,16 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
 }
 
+.ant-input, .ant-input-lg, .ant-btn-primary.ant-btn-lg {
+    color: #212121;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.ant-btn.ant-btn-secondary {
+    background: #00000030;
+}
+
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 50px;
@@ -59,7 +69,7 @@ nav a.selected {
     align-items: center;
     justify-content: space-between;
     color: white;
-    padding: 0 10px;
+    padding: 0 20px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     z-index: 10;
 }
@@ -101,6 +111,23 @@ button.ant-btn-primary,
 button.ant-btn-primary:focus,
 button.ant-btn-primary:hover {
     color: #212121;
+}
+
+.sign-in {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    outline: none;
+}
+
+.sign-in>.sign-in-text {
+    padding: 0 10px;
+}
+
+.sign-in>.ant-avatar {
+    background: rgba(204, 204, 204, 0.5);
 }
 
 @keyframes App-logo-spin {

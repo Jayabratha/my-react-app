@@ -3,6 +3,9 @@ import { Game } from '../Game/Game';
 import { PlotHighLow } from '../PlotHighLow/PlotHighLow';
 
 export class Demos extends Component {
+    componentWillMount() {
+        console.log("Component will mount");
+    }
     componentDidMount() {
         console.log("Demos Mounted");
     }

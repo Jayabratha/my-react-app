@@ -1,0 +1,13 @@
+.divider-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.divider {
+    border-top: thin dashed #ccc;
+    flex-grow: 1;
+}
+
+.or {
+    padding: 5px;
+}
