@@ -113,13 +113,30 @@ button.ant-btn-primary:hover {
     color: #212121;
 }
 
+.ant-dropdown-menu {
+    background: #2e333b;
+    margin-top: 12px;
+}
+
+.ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {
+    background-color: transparent
+}
+.ant-dropdown-menu-item-divider {
+    background-color: rgba(27, 30, 35, 0.82);
+}
+
 .sign-in {
     background: transparent;
     border: none;
     cursor: pointer;
-    display: flex;
+    display: inline-block;
     align-items: center;
     outline: none;
+}
+
+.user-name {
+    padding: 0 10px;
+    display: inline-block;
 }
 
 .sign-in>.sign-in-text {

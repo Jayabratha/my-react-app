@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
 import { Form, Input, Icon, Button } from 'antd';
 import * as firebase from 'firebase/app';
+
 import './SignIn.css';
 
 export function SignUp(props) {
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
     function showSignIn() {
-        props.testing();
+        props.toggleSignInUp();
     }
 
-    function handleSignUp(email, password) {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-            // var errorCode = error.code;
-            // var errorMessage = error.message;
-            console.log(error);
-          });
+    function handleSignUp(e) {
+        e.preventDefault();
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     return (
@@ -24,20 +32,26 @@ export function SignUp(props) {
                 <Form.Item>
                     <Input size="large"
                         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter email id" />
                 </Form.Item>
                 <Form.Item>
                     <Input.Password size="large"
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="Enter password" />
                 </Form.Item>
                 <Form.Item>
                     <Input.Password size="large"
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Confirm password" />
                 </Form.Item>
                 <Form.Item>
-                    <Button size="large" type="primary" style={{ width: '100%', margin: '25px 0' }} onClick={handleSignUp}>Sign Up</Button>
+                    <Button size="large" type="primary" htmlType="submit" style={{ width: '100%', margin: '25px 0' }}>Sign Up</Button>
                 </Form.Item>
             </Form>
             <div className="divider-wrapper">

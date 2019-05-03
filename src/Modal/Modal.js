@@ -4,7 +4,6 @@ import { Icon } from 'antd';
 import './Modal.css';
 
 export function Modal(props) {
-    console.log(props);
     return (
         <div className={`modal-wrapper ${props.show ? 'show' : ''}`}>
             <div className="content">
