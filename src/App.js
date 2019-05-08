@@ -32,38 +32,30 @@ class App extends Component {
     this.state = {
       auth: false,
       showSignInUp: false,
-      showSignIn: true
+      showSignIn: true,
+      user: null
     }
 
     firebase.auth().onAuthStateChanged((user) => {
-      let auth = false;
-      if (user) {
-        // User is signed in.
-        console.log(user);
-        auth = true;
-      } else {
-        auth = false;
-      }
-      console.log(auth);
       this.setState({
-        auth: auth
+        auth: user ? true : false,
+        user: user ? user : null
       });
     });
-  }
 
-  signIn = () => {
-    this.toggleSignInModal();
+    console.log(firebase.auth());
   }
 
   logoutUser = () => {
-    console.log('Sign Out');
     firebase.auth().signOut();
   }
 
-  toggleSignInModal = () => {
+  toggleSignInModal = (e, close) => {
+    console.log("test", close);
     this.setState({
-      showSignInUp: !this.state.showSignInUp
-    })
+      showSignInUp: close ? false : !this.state.showSignInUp,
+      showSignIn: true
+    });
   }
 
   toggleSignInSignUp = () => {
@@ -73,7 +65,15 @@ class App extends Component {
   }
 
   signInSuccess = () => {
+    this.setState({
+      showSignInUp: false
+    });
+  }
 
+  handleProfileUpdate = (update) => {
+    this.setState({
+      user: { ...this.state.user, update }
+    })
   }
 
   render() {
@@ -89,7 +89,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <header className="App-header">
-            <div>
+            <div className="logo-nav">
               <img src={logo} className="App-logo" alt="logo" />
               <nav>
                 <ul>
@@ -104,11 +104,11 @@ class App extends Component {
             </div>
             <div>
               {!this.state.auth ?
-                <button className="sign-in" onClick={this.signIn}>
+                <button className="sign-in" onClick={this.toggleSignInModal}>
                   <span className="sign-in-text" >Sign in</span>
                 </button>
                 :
-                <div class="user-name">Welcome</div>
+                <div className="user-name">{this.state.user.displayName}</div>
               }
               <Dropdown overlay={menu} trigger={['click']} disabled={!this.state.auth}>
                 <Avatar icon="user" />
@@ -116,15 +116,20 @@ class App extends Component {
             </div>
           </header>
           <main>
-            <Route path="/" exact component={Home} />
-            <ProtectedRoute auth={this.state.auth} path="/demos" component={Demos} />
-            <ProtectedRoute auth={this.state.auth} path="/profile" component={Profile} />
             <div className="background-logo-wrapper"><img src={logo} className="background-logo" alt="logo" /></div>
+            <Route path="/" exact component={Home} />
+            <ProtectedRoute auth={this.state.auth} path="/demos"
+              component={Demos} />
+            <ProtectedRoute auth={this.state.auth} path="/profile"
+              component={Profile} comProps={{
+                user: this.state.user,
+                profileUpdated: (update) => this.handleProfileUpdate(update)
+              }} />
           </main>
         </Router>
         <div className="login-modal">
           {!this.state.auth &&
-            <Modal show={this.state.showSignInUp} closeModal={this.toggleSignInModal} >
+            <Modal show={this.state.showSignInUp} closeModal={(e) => this.toggleSignInModal(e, true)} >
               {
                 this.state.showSignIn ? (
                   <SignIn toggleSignInUp={this.toggleSignInSignUp} signInSuccess={this.signInSuccess} />

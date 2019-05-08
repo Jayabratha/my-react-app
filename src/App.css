@@ -8,6 +8,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
     color: #ffffff;
 }
+h1 {
+    font-size: 40px;
+}
 
 .ant-input, .ant-input-lg, .ant-btn-primary.ant-btn-lg {
     color: #212121;
@@ -17,6 +20,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .ant-btn.ant-btn-secondary {
     background: #00000030;
+}
+
+.ant-form-item-label > label {
+    color: #ffffff;
+}
+
+.ant-alert-description {
+    color: rgba(0,0,0,0.65);
 }
 
 .App-logo {
@@ -69,9 +80,20 @@ nav a.selected {
     align-items: center;
     justify-content: space-between;
     color: white;
-    padding: 0 20px;
+    padding: 0 2vw;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     z-index: 10;
+}
+
+.logo-nav {
+    display: flex;
+    align-items: center; 
+}
+
+.logo-nav ul {
+    display: flex;
+    align-items: center;
+    padding: 0;
 }
 
 main {
@@ -94,14 +116,14 @@ main {
     top: 0;
     right: 0;
     width: 100vw;
-    min-height: 100vh;
-    max-width: 130vh;
+    height: 100vh;
     overflow: hidden;
 }
 
 .background-logo {
     position: relative;
     top: -20vh;
+    width: 180%;
     height: 150vh;
     opacity: 0.2;
 }
@@ -139,11 +161,11 @@ button.ant-btn-primary:hover {
     display: inline-block;
 }
 
-.sign-in>.sign-in-text {
+.sign-in-text {
     padding: 0 10px;
 }
 
-.sign-in>.ant-avatar {
+.ant-avatar {
     background: rgba(204, 204, 204, 0.5);
 }
 

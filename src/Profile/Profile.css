@@ -1,0 +1,17 @@
+.profile-form {
+    margin: 50px 0;
+    max-width: 400px;
+}
+
+.verify-button {
+    position: absolute;
+    right: 4px;
+    top: -8px;
+}
+
+.verified-icon {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    font-size: 16px;
+}

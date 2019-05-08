@@ -33,6 +33,7 @@ export function SignUp(props) {
                     <Input size="large"
                         prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         value={email}
+                        autoComplete="username"
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter email id" />
                 </Form.Item>
@@ -40,6 +41,7 @@ export function SignUp(props) {
                     <Input.Password size="large"
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         value={password}
+                        autoComplete="new-password"
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Enter password" />
                 </Form.Item>
@@ -47,6 +49,7 @@ export function SignUp(props) {
                     <Input.Password size="large"
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         value={confirmPassword}
+                        autoComplete="new-password"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Confirm password" />
                 </Form.Item>
