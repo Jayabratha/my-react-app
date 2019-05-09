@@ -8,6 +8,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
     color: #ffffff;
 }
+
 h1 {
     font-size: 40px;
 }
@@ -22,12 +23,51 @@ h1 {
     background: #00000030;
 }
 
-.ant-form-item-label > label {
+.ant-form-item-label>label {
     color: #ffffff;
 }
 
 .ant-alert-description {
-    color: rgba(0,0,0,0.65);
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.menu-icon {
+    position: relative;
+    width: 20px;
+    height: 10px;
+    display: none;
+}
+
+.menu-icon:before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background-color: #ffffff;
+    position: absolute;
+    transform: rotate3d(0, 0, 1, 0);
+    transition: all 0.5s;
+}
+
+.menu-icon:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background-color: #ffffff;
+    top: 8px;
+    transform: rotate3d(0, 0, 1, 0);
+    transition: all 0.5s;
+}
+
+.menu-icon.close:before {
+    top: 4px;
+    transform: rotate3d(0, 0, 1, 45deg);
+}
+
+.menu-icon.close:after {
+    top: 4px;
+    width: 20px;
+    transform: rotate3d(0, 0, 1, -45deg);
 }
 
 .App-logo {
@@ -87,7 +127,7 @@ nav a.selected {
 
 .logo-nav {
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
 .logo-nav ul {
@@ -128,10 +168,7 @@ main {
     opacity: 0.2;
 }
 
-
-button.ant-btn-primary,
-button.ant-btn-primary:focus,
-button.ant-btn-primary:hover {
+button.ant-btn-primary, button.ant-btn-primary:focus, button.ant-btn-primary:hover {
     color: #212121;
 }
 
@@ -143,6 +180,7 @@ button.ant-btn-primary:hover {
 .ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {
     background-color: transparent
 }
+
 .ant-dropdown-menu-item-divider {
     background-color: rgba(27, 30, 35, 0.82);
 }
@@ -175,5 +213,40 @@ button.ant-btn-primary:hover {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 650px) {
+    .menu-icon {
+        display: block;
+    }
+    nav {
+        position: fixed;
+        height: 100vh;
+        width: 60%;
+        top: 61px;
+        left: -60%;
+        background: #2d333b;
+        box-shadow: 0 3px 7px 3px rgba(0,0,0,0.1);
+        transition: left 0.5s ease-out;
+    }
+
+    nav.show {
+        left: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        width: 100%;
+        padding: 0;
+    }
+
+    nav a {
+        border-bottom: none;
+        border-left: 2px solid transparent;
+        padding: 0 20px;
     }
 }

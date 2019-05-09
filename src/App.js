@@ -33,7 +33,8 @@ class App extends Component {
       auth: false,
       showSignInUp: false,
       showSignIn: true,
-      user: null
+      user: null,
+      showMenu: false
     }
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -48,6 +49,12 @@ class App extends Component {
 
   logoutUser = () => {
     firebase.auth().signOut();
+  }
+
+  toggleMenu = () => {
+    this.setState({
+      showMenu: !this.state.showMenu
+    })
   }
 
   toggleSignInModal = (e, close) => {
@@ -90,8 +97,10 @@ class App extends Component {
         <Router>
           <header className="App-header">
             <div className="logo-nav">
+              <div className={(this.state.showMenu ? 'close ' : '') + 'menu-icon' } onClick={this.toggleMenu}>
+              </div>
               <img src={logo} className="App-logo" alt="logo" />
-              <nav>
+              <nav className={this.state.showMenu ? 'show' : ''}>
                 <ul>
                   <li>
                     <NavLink exact activeClassName="selected" to="/">Home</NavLink>
