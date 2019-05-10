@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Game } from '../Game/Game';
 import { PlotHighLow } from '../PlotHighLow/PlotHighLow';
 
-export class Demos extends Component {
+export default class Demos extends Component {
     componentWillMount() {
         console.log("Component will mount");
     }

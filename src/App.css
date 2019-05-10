@@ -189,22 +189,17 @@ button.ant-btn-primary, button.ant-btn-primary:focus, button.ant-btn-primary:hov
     background: transparent;
     border: none;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
     align-items: center;
     outline: none;
 }
 
 .user-name {
-    padding: 0 10px;
     display: inline-block;
 }
 
-.sign-in-text {
-    padding: 0 10px;
-}
-
 .ant-avatar {
-    background: rgba(204, 204, 204, 0.5);
+    background: transparent;
 }
 
 @keyframes App-logo-spin {

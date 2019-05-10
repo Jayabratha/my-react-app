@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import { Avatar, Menu, Dropdown } from 'antd';
 
-import logo from './logo.svg';
 import { Home } from './Home/Home';
-import { Demos } from './Demos/Demos';
 import { Profile } from './Profile/Profile';
 import { ProtectedRoute } from './ProtectedRoute/ProtectedRoute';
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
-import { Avatar, Menu, Dropdown } from 'antd';
 import { Modal } from './Modal/Modal';
 import { SignIn } from './SignIn/SignIn';
+import { SignUp } from './SignIn/SignUp';
+
+import Loadable from 'react-loadable';
+import Loader from './Loader/Loader';
+
 import * as firebase from 'firebase/app';
 import "firebase/auth";
+
+import logo from './logo.svg';
 import './App.css';
-import { SignUp } from './SignIn/SignUp';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCdBg_iSfGNRz_gZuAkLsT1FV0voVLMRxU",
@@ -23,6 +26,11 @@ const firebaseConfig = {
   storageBucket: "my-react-app-251b8.appspot.com",
   messagingSenderId: "372007547904"
 };
+
+const AsyncDemo = Loadable({
+  loader: () => import("./Demos/Demos"),
+  loading: Loader
+});
 
 firebase.initializeApp(firebaseConfig);
 
@@ -97,7 +105,7 @@ class App extends Component {
         <Router>
           <header className="App-header">
             <div className="logo-nav">
-              <div className={(this.state.showMenu ? 'close ' : '') + 'menu-icon' } onClick={this.toggleMenu}>
+              <div className={(this.state.showMenu ? 'close ' : '') + 'menu-icon'} onClick={this.toggleMenu}>
               </div>
               <img src={logo} className="App-logo" alt="logo" />
               <nav className={this.state.showMenu ? 'show' : ''}>
@@ -115,20 +123,23 @@ class App extends Component {
               {!this.state.auth ?
                 <button className="sign-in" onClick={this.toggleSignInModal}>
                   <span className="sign-in-text" >Sign in</span>
+                  <Avatar icon="user" />
                 </button>
                 :
-                <div className="user-name">{this.state.user.displayName}</div>
+                <Dropdown overlay={menu} trigger={['click']} disabled={!this.state.auth}>
+                  <div className="sign-in">
+                    <div>{this.state.user.displayName}</div>
+                    <Avatar icon="user" />
+                  </div>
+                </Dropdown>
               }
-              <Dropdown overlay={menu} trigger={['click']} disabled={!this.state.auth}>
-                <Avatar icon="user" />
-              </Dropdown>
             </div>
           </header>
           <main>
             <div className="background-logo-wrapper"><img src={logo} className="background-logo" alt="logo" /></div>
             <Route path="/" exact component={Home} />
             <ProtectedRoute auth={this.state.auth} path="/demos"
-              component={Demos} />
+              component={AsyncDemo} />
             <ProtectedRoute auth={this.state.auth} path="/profile"
               component={Profile} comProps={{
                 user: this.state.user,
